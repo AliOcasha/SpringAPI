@@ -1,0 +1,35 @@
+###
+POST http://localhost:8080/api/v1/student
+Content-Type: application/json
+
+{
+    "name": "Nuradin",
+    "email": "nuradinnnaiem@gmail.com",
+    "dob": "2001-08-02",
+    "grade": 12
+}
+
+###
+POST http://localhost:8080/api/v1/student
+Content-Type: application/json
+
+{
+    "name": "ramadan",
+    "email": "ramadanaiem@gmail.com",
+    "dob": "2006-10-11",
+    "grade": 9
+}
+
+###
+DELETE http://localhost:8080/api/v1/student/2
+
+###
+DELETE http://localhost:8080/api/v1/student/6
+
+###
+
+PUT http://localhost:8080/api/v1/student/5?name=Ramadan&email=ramadannaiem@gmail.com
+
+###
+
+PUT http://localhost:8080/api/v1/student/9?name=Ramadan
