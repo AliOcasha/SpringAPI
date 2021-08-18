@@ -2,9 +2,7 @@ package com.example.demo.student;
 
 import java.time.LocalDate;
 import java.time.Period;
-
 import javax.persistence.*;
-
 @Entity
 @Table
 public class Student 
@@ -21,19 +19,17 @@ public class Student
         strategy = GenerationType.SEQUENCE,
         generator = "student_sequence"
     )
+
     private Long id;
-    
     private String name;
     private LocalDate dob;
     private String email;
     private Integer grade;
     
-    
     @Transient
     private Integer age;
     
     public Student(){}
-    
     public Student(Long id, String name, LocalDate dob, String email, Integer grade)
     {
         this.id = id;
@@ -42,7 +38,6 @@ public class Student
         this.email = email;
         this.grade = grade;
     }
-    
     public Student(String name, LocalDate dob, String email, Integer grade)
     {
         this.name = name;
@@ -54,7 +49,6 @@ public class Student
     public Long getId() {
         return id;
     }
-    
     public void setId(Long id) {
         this.id = id;
     }
@@ -62,7 +56,6 @@ public class Student
     public String getName() {
         return name;
     }
-    
     public void setName(String name) {
         this.name = name;
     }
@@ -70,7 +63,6 @@ public class Student
     public Integer getAge() {
         return Period.between(this.getDob(), LocalDate.now()).getYears();
     }
-    
     public void setAge(Integer age) {
         this.age = age;
     }
@@ -78,7 +70,6 @@ public class Student
     public LocalDate getDob() {
         return dob;
     }
-    
     public void setDob(LocalDate dob) {
         this.dob = dob;
     }
@@ -86,7 +77,6 @@ public class Student
     public String getEmail() {
         return email;
     }
-    
     public void setEmail(String email) {
         this.email = email;
     }
@@ -94,7 +84,6 @@ public class Student
     public Integer getGrade() {
         return grade;
     }
-    
     public void setGrade(Integer grade) {
         this.grade = grade;
     }
