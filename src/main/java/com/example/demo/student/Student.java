@@ -22,11 +22,12 @@ public class Student
         generator = "student_sequence"
     )
     private Long id;
+    
     private String name;
     private LocalDate dob;
     private String email;
     private Integer grade;
-
+    
     
     @Transient
     private Integer age;
@@ -97,9 +98,10 @@ public class Student
     public void setGrade(Integer grade) {
         this.grade = grade;
     }
-
+    
     @Override
     public String toString() {
-        return "Student [age=" + age + ", dob=" + dob + ", email=" + email + ", id=" + id + ", name=" + name + "]";
-    } 
+        return "Student [age=" + age + ", dob=" + dob + ", email=" + email + ", grade=" + grade + ", id=" + id
+                + ", name=" + name + "]";
+    }
 }

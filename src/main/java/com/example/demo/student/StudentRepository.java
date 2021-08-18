@@ -9,9 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Long>
 {
-    @Query("SELECT s FROM Student s WHERE s.email = ?1 AND s.dob = ?1 AND s.name = ?1 AND s.grade = ?1")
-    Optional<Student> findStudentbyEverything(String email, LocalDate dob, String name, Integer grade);
-
     @Query("SELECT s FROM Student s WHERE s.email = ?1")
     Optional<Student> findStudentByEmail(String email);
 
@@ -23,4 +20,16 @@ public interface StudentRepository extends JpaRepository<Student, Long>
 
     @Query("SELECT s FROM Student s WHERE s.grade = ?1")
     Optional<Student> findStudentbyGrade(Integer grade);
+
+    public default boolean existbyEmail(String email){
+        return findStudentByEmail(email) != null ? true : false;}
+
+	public default boolean existbyName(String name){
+        return findStudentbyName(name) != null ? true : false;}
+
+	public default boolean existbyDoB(LocalDate dob){
+        return findStudentbyDoB(dob) != null ? true : false;}
+
+	public default boolean existbyGrade(Integer grade){
+        return findStudentbyGrade(grade) != null ? true : false;}
 }
