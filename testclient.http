@@ -1,4 +1,8 @@
 ###
+
+GET http://localhost:8080/api/v1/student/localhost:8080/api/v1/student/9
+
+###
 POST http://localhost:8080/api/v1/student
 Content-Type: application/json
 

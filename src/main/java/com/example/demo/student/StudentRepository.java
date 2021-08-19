@@ -1,6 +1,7 @@
 package com.example.demo.student;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
@@ -18,7 +19,7 @@ public interface StudentRepository extends JpaRepository<Student, Long>
     Optional<Student> findStudentbyName(String name);
 
     @Query("SELECT s FROM Student s WHERE s.grade = ?1")
-    Optional<Student> findStudentbyGrade(Integer grade);
+    List<Student> findStudentsbyGrade(Integer grade);
 
     public default boolean existbyEmail(String email){
         return findStudentByEmail(email) != null ? true : false;}
@@ -30,5 +31,5 @@ public interface StudentRepository extends JpaRepository<Student, Long>
         return findStudentbyDoB(dob) != null ? true : false;}
 
 	public default boolean existbyGrade(Integer grade){
-        return findStudentbyGrade(grade) != null ? true : false;}
+        return findStudentsbyGrade(grade) != null ? true : false;}
 }

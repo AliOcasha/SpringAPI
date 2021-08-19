@@ -16,8 +16,11 @@ public class StudentService
 		this.studentRepository = studentRepository;
 	}
 
-    public List<Student> getStudents()
+    public List<Student> getStudents(Integer grade)
 	{
+		if (grade != null)
+			System.out.println(studentRepository.findStudentsbyGrade(grade));
+			
 		return studentRepository.findAll();
 	}
 

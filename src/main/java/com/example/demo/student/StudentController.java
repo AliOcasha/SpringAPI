@@ -16,10 +16,10 @@ public class StudentController
         this.studentService = studentService;
     }
 
-    @GetMapping
-	public List<Student> getStudents()
+    @GetMapping()
+	public List<Student> getStudents(@RequestParam(required = false) Integer grade)
 	{
-        return studentService.getStudents();
+        return studentService.getStudents(grade);
 	}
 
     @PostMapping
