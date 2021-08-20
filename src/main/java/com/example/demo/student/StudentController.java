@@ -17,7 +17,7 @@ public class StudentController
     }
 
     @GetMapping(path = "{grade}")
-	public List<Student> getStudents(@RequestParam(required = false)@PathVariable("grade")Integer grade)
+	public List<Student> getStudents(@PathVariable("grade")Integer grade)
 	{
         return studentService.getStudents(grade);
 	}

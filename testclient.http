@@ -1,10 +1,13 @@
 ###
-GET http://localhost:8080/api/v1/student/0
+GET http://localhost:8080/api/v1/student/16
+// Get all students in grade 16
 
 ###
-GET http://localhost:8080/api/v1/student/9?grade=9
+GET http://localhost:8080/api/v1/student/133
+// Get all students in grade 133
 
 ###
+
 POST http://localhost:8080/api/v1/student
 Content-Type: application/json
 
@@ -14,6 +17,7 @@ Content-Type: application/json
     "dob": "2001-08-02",
     "grade": 12
 }
+// Add Nuradin Student
 
 ###
 POST http://localhost:8080/api/v1/student
@@ -25,17 +29,20 @@ Content-Type: application/json
     "dob": "2006-10-11",
     "grade": 9
 }
+// Add wrong Ramdan Student
 
 ###
 DELETE http://localhost:8080/api/v1/student/2
+// Delete Student with ID 2
 
 ###
 DELETE http://localhost:8080/api/v1/student/6
+// Error ID not given
 
 ###
-
 PUT http://localhost:8080/api/v1/student/5?name=Ramadan&email=ramadannaiem@gmail.com
+// Correct Ramadan Student
 
 ###
-
 PUT http://localhost:8080/api/v1/student/9?name=Ramadan
+// Error ID not given
