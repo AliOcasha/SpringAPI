@@ -11,28 +11,21 @@ public class StudentController
     private final StudentService studentService;
 
     @Autowired
-    public StudentController(StudentService studentService)
-    {
-        this.studentService = studentService;
-    }
+    public StudentController(StudentService studentService){
+        this.studentService = studentService;}
 
     @GetMapping(path = "{grade}")
-	public List<Student> getStudents(@PathVariable("grade")Integer grade)
-	{
-        return studentService.getStudents(grade);
-	}
+	public List<Student> getStudents(@PathVariable("grade")Integer grade){
+        return studentService.getStudents(grade);}
 
     @PostMapping
-    public void registerNewStudent(@RequestBody Student student)
-    {
-        studentService.addNewStudent(student);
-    }
+    public void registerNewStudent(@RequestBody Student student){
+        studentService.addNewStudent(student);}
 
-    @DeleteMapping(path = "{studentId}")
-    public void deleteStudent(@PathVariable("studentId")Long id)
-    {
-        studentService.deleteStudent(id);
-    }
+    @DeleteMapping()
+    public void deleteStudent(@RequestParam(required = false) Long id,
+                              @RequestParam(required = false) Integer grade){
+        studentService.deleteStudent(id, grade);}
 
     @PutMapping(path = "{studentId}")
     public void updateStudent(@PathVariable("studentId") Long id, 

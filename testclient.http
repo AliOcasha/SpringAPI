@@ -32,11 +32,11 @@ Content-Type: application/json
 // Add wrong Ramdan Student
 
 ###
-DELETE http://localhost:8080/api/v1/student/2
+DELETE http://localhost:8080/api/v1/student?grade=9
 // Delete Student with ID 2
 
 ###
-DELETE http://localhost:8080/api/v1/student/6
+DELETE http://localhost:8080/api/v1/student?id=2
 // Error ID not given
 
 ###
