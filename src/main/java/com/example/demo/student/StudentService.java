@@ -18,10 +18,17 @@ public class StudentService
 
     public List<Student> getStudents(Integer grade)
 	{
+		System.out.println(grade);
 		if (grade != null)
-			System.out.println(studentRepository.findStudentsbyGrade(grade));
-			
-		return studentRepository.findAll();
+		{
+			System.out.println("Grade List Output");
+			return studentRepository.findStudentsbyGrade(grade);
+		}
+		else
+		{
+			System.out.println("All List Output");	
+			return studentRepository.findAll();
+		}
 	}
 
 	public void addNewStudent(Student student) 
