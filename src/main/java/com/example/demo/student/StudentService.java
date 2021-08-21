@@ -14,23 +14,13 @@ public class StudentService
 	public StudentService(StudentRepository studentRepository){
 		this.studentRepository = studentRepository;}
 
-    public List<Student> getStudents(Integer grade)
-	{
-		System.out.println(grade);
-		if (grade != 0)
-		{
-			return studentRepository.findStudentsbyGrade(grade);
-		}
-		else
-		{
-			return studentRepository.findAll();
-		}
-	}
-		//return grade != null ? studentRepository.findStudentsbyGrade(grade) : studentRepository.findAll();}
+    public List<Student> getStudents(Integer grade){
+		return grade != 0 ? studentRepository.findStudentsbyGrade(grade) : studentRepository.findAll();}
 
 	public void addNewStudent(Student student) 
 	{
 		Optional<Student> studentbyEmail = studentRepository.findStudentByEmail(student.getEmail());
+
 		if (studentbyEmail.isPresent())
 		{
 			throw new IllegalStateException("Email Taken!");
@@ -40,9 +30,10 @@ public class StudentService
 
     public void deleteStudent(Long id, Integer grade) 
 	{
-		if (grade != null)
+		boolean exists = grade != 0 ? studentRepository.existbyGrade(grade) : studentRepository.existsById(id);
+
+		if (grade != 0)
 		{
-			boolean exists = studentRepository.existbyGrade(grade);
 			if (!exists)
 			{
 				throw new IllegalStateException("Grade " + grade + " does not exist!");
@@ -51,7 +42,6 @@ public class StudentService
 		}
 		else
 		{
-			boolean exists = studentRepository.existsById(id);
 			if (!exists)
 			{
 				throw new IllegalStateException("Student with ID " + id + " does not exist!");
@@ -63,8 +53,7 @@ public class StudentService
 	@Transactional()
 	public void updateStudent(Long id, String name, String email) 
 	{
-		Student student = studentRepository.findById(id).
-		orElseThrow(() -> new IllegalStateException("Student with ID " + id + " does not exist!"));
+		Student student = studentRepository.findById(id).orElseThrow(() -> new IllegalStateException("Student with ID " + id + " does not exist!"));
 
 		if (name != null && name.length() > 0 && !Objects.equals(student.getName(), name))
 			student.setName(name);
@@ -72,6 +61,7 @@ public class StudentService
 		if (email != null && email.length() > 0 && !Objects.equals(student.getName(), email))
 		{
 			Optional<Student> sOptional = studentRepository.findStudentByEmail(email);
+
 			if (sOptional.isPresent())
 				throw new IllegalStateException("Email Taken!");
 
