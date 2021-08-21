@@ -88,7 +88,7 @@ public class Teacher
     }
 
     public String getEmail() {
-        return name + "@niceschool.com";
+        return name.toLowerCase().replaceAll(" ", "_") + "@niceschool.com";
     }
 
     public void setEmail(String email) {

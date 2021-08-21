@@ -1,0 +1,60 @@
+###
+POST http://localhost:8080/api/v1/teacher
+Content-Type: application/json
+
+{
+    "name": "Albert Schweiter",
+    "dob": "1971-01-02",
+    "mainsubject": "Physik"
+}
+// Add Albert Teacher
+
+###
+POST http://localhost:8080/api/v1/teacher
+Content-Type: application/json
+
+{
+    "name": "Albert Schweiter",
+    "dob": "1971-01-02",
+    "mainsubject": "Physik"
+}
+// Error : Teacher exists in system
+
+###
+POST http://localhost:8080/api/v1/teacher
+Content-Type: application/json
+
+{
+    "name":"Ahmad Sakkum",
+    "dob": "1987-04-08",
+    "mainsubject": "Chemy"
+}
+// Add Incorrect Teacher Ahmad
+
+###
+GET http://localhost:8080/api/v1/teacher/Physik
+// Get all Teacher that have Physik as a Subject
+
+###
+GET http://localhost:8080/api/v1/teacher/Deutsch
+// Get all Teacher that have Deutsch as a Subject
+
+###
+GET http://localhost:8080/api/v1/teacher/dsfsdf
+// Get all Teacher that have dsfsdf as a Subject
+
+###
+DELETE http://localhost:8080/api/v1/teacher/1
+// Delete Teacher with id 1
+
+###
+DELETE http://localhost:8080/api/v1/teacher/100
+// Error : no such id
+
+###
+PUT http://localhost:8080/api/v1/teacher/5?mainsubject=Chemie
+// Updating Ahmad to Correct "Chemie"
+
+###
+PUT http://localhost:8080/api/v1/teacher/50?mainsubject=Chemie
+// Error : no such id

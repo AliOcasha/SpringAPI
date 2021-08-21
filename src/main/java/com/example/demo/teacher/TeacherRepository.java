@@ -2,14 +2,17 @@ package com.example.demo.teacher;
 
 import java.util.*;
 
-public class TeacherRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+@Repository
+public interface TeacherRepository extends JpaRepository<Teacher, Long>
+{
 
-    public List<Teacher> findTeachersbySubject(String mainsubject) {
-        return null;
-    }
+    @Query("SELECT t FROM Teacher t WHERE t.mainsubject = ?1")
+    List<Teacher> findTeachersbySubject(String mainsubject);
 
-    public Optional<Teacher> findTeacherbyEmail(String email) {
-        return null;
-    }
+    @Query("SELECT t FROM Teacher t WHERE t.name = ?1")
+    Optional<Teacher> findTeacherbyName(String name);
 
 }
