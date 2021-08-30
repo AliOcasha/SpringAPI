@@ -1,7 +1,7 @@
 # Spring-API
 Creating a _Backend API_ using **Spring Boot in Java** for a pseudo-school.  
 Managing Students and Teachers using _GET, POST, PUT and DELETE_ Requests configured to needs.  
-This Application then will be **docker**ized running in containers ( one for the actual app and one for the postgres database).  
+This Application then will be **Docker**-ized running in containers ( one for the actual app and one for the postgres database).  
 Lastly **Kubernetes** will be added to the project to manage the containers at run time.  
 As an optional extra I will write Unite and Integration-Tests for the Application.  
   

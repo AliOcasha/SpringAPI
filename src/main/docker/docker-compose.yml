@@ -17,7 +17,7 @@ services:
       - 8080:8080
           
   db:
-    image: 'postgres:13.1-alpine'
+    image: 'postgres:latest'
     container_name: 'db'
     environment:
       - POSTGRES_USER=postgres
