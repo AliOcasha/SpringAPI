@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-api
+  labels:
+    app: spring-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-api
+  template:
+    metadata:
+      labels:
+        app: spring-api
+    spec:
+      containers:
+        - name: spring-api
+          image: aliocasha/spring-api:v1
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name:  db-config
+                  key: DB_HOST
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: db-config
+                  key: DB_NAME
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: POSTGRES_USER
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: POSTGRES_PASSWORD
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-service
+  labels:
+    name: api-service
+spec:
+  type: NodePort
+  selector:
+    app: spring-api
+  ports:
+  - protocol: TCP
+    nodePort: 30163
+    port: 8080
+    targetPort: 8080
