@@ -1,0 +1,71 @@
+#PersistentVolumeClaim
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 256Mi
+
+---
+# DataBase Deployment
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db
+  template:
+    metadata:
+      labels:
+        app: db
+    spec:
+      containers:
+      - name: db
+        image: aliocasha/postgres:v1
+        ports:
+          - containerPort: 5432
+        volumeMounts:
+          - name: storage
+            mountPath: /data/db
+        env:
+          - name: POSTGRES_USER
+            valueFrom:
+              secretKeyRef:
+                name: db-secret
+                key: POSTGRES_USER
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: db-secret
+                key: POSTGRES_PASSWORD
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: postgres-pvc
+
+---
+#Internal Service
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: db
+spec:
+  selector:
+    app: db
+  ports:
+    - port: 5432
+      targetPort: 5432
