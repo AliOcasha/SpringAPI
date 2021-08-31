@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: db-config
-data:
-  DB_HOST: postgres
-  DB_NAME: school

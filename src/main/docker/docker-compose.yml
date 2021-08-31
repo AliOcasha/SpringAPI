@@ -2,7 +2,7 @@ version: '2'
 
 services:
   app:
-    image: 'spring-api:latest'
+    image: 'aliocasha/spring-api:v1'
     build:
       context: .
     container_name: 'spring-api'
@@ -17,7 +17,7 @@ services:
       - 8080:8080
           
   db:
-    image: 'postgres:latest'
+    image: 'aliocasha/postgres:v1'
     container_name: 'db'
     environment:
       - POSTGRES_USER=postgres
