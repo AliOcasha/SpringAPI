@@ -2,7 +2,7 @@ version: '2'
 
 services:
   app:
-    image: 'aliocasha/spring-api:v1'
+    image: 'aliocasha/spring-api:v2'
     build:
       context: .
     container_name: 'spring-api'
