@@ -5,6 +5,7 @@ import java.util.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.*;
 
+//Adding initial Students to Database
 @Configuration
 public class StudentConfig 
 {

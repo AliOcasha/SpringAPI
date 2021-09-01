@@ -5,6 +5,8 @@ import org.springframework.context.annotation.*;
 import java.time.*;
 import java.util.*;
 
+// Look into Student Equivalent
+
 @Configuration
 public class TeacherConfig 
 {

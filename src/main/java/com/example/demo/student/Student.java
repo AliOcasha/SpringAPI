@@ -1,12 +1,15 @@
 package com.example.demo.student;
 
-import java.time.LocalDate;
-import java.time.Period;
+import java.time.*;
 import javax.persistence.*;
+
+// Student Class
+// Writing into Database
 @Entity
 @Table
 public class Student 
 {
+    // Choosing Id as Key and Creating a Sequence -> ID will be generated
     @Id
     @SequenceGenerator
     (
@@ -25,7 +28,8 @@ public class Student
     private LocalDate dob;
     private String email;
     private Integer grade;
-    
+
+    // Value that is no input but will be calculated and then added to the database
     @Transient
     private Integer age;
     
@@ -87,7 +91,8 @@ public class Student
     public void setGrade(Integer grade) {
         this.grade = grade;
     }
-    
+
+    // For Printing the Student Object
     @Override
     public String toString() {
         return "Student [age=" + age + ", dob=" + dob + ", email=" + email + ", grade=" + grade + ", id=" + id

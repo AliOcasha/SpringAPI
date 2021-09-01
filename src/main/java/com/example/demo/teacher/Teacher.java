@@ -1,8 +1,9 @@
 package com.example.demo.teacher;
 
 import java.time.*;
-
 import javax.persistence.*;
+
+// Look into Student Equivalent
 
 @Entity
 @Table

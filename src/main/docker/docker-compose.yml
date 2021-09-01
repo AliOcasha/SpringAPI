@@ -17,7 +17,7 @@ services:
       - 8080:8080
           
   db:
-    image: 'aliocasha/postgres:v1'
+    image: 'aliocasha/db:v1'
     container_name: 'db'
     environment:
       - POSTGRES_USER=postgres

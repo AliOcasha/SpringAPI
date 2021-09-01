@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+// Look into Student Equivalent
 @RestController@RequestMapping(path = "api/v1/teacher")
 public class TeacherController 
 {

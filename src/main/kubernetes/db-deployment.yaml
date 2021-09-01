@@ -1,4 +1,4 @@
-#PersistentVolumeClaim
+#persistent Volumeclaim
 
 apiVersion: v1
 kind: PersistentVolumeClaim

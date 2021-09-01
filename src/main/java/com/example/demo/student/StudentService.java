@@ -5,15 +5,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+// Declaring this class as Service
 @Service
 public class StudentService 
 {
+	// using the Student Repo
 	private final StudentRepository studentRepository;
 
 	@Autowired
 	public StudentService(StudentRepository studentRepository){
 		this.studentRepository = studentRepository;}
 
+	// Defining Functions using student Repo Functions
     public List<Student> getStudents(Integer grade){
 		return grade != 0 ? studentRepository.findStudentsbyGrade(grade) : studentRepository.findAll();}
 
@@ -50,6 +53,7 @@ public class StudentService
 		}
     }
 
+	// Defining a Function where Getter and Setters are allowed to use
 	@Transactional()
 	public void updateStudent(Long id, String name, String email) 
 	{

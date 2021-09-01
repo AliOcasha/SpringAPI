@@ -1,10 +1,10 @@
 package com.example.demo.teacher;
 
 import java.util.*;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
+
+// Look into Student Equivalent
 @Repository
 public interface TeacherRepository extends JpaRepository<Teacher, Long>
 {
