@@ -12,7 +12,7 @@ spec:
       storage: 256Mi
 
 ---
-# DataBase Deployment
+# Database Deployment
 
 apiVersion: apps/v1
 kind: Deployment
